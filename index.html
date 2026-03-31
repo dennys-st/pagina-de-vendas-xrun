@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>X-RUN Team | Landing Page</title>
+    <link rel="icon" type="image/png" href="xrun-logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.tailwindcss.com?plugins=aspect-ratio"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
@@ -12,6 +13,10 @@
             --primary-orange: #FF5722;
             --bg-black: #000000;
             --bg-card: #121212;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body { 
@@ -194,20 +199,19 @@
             </h1>
 
             <!-- Vimeo Player -->
-            <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-[0_0_30px_rgba(255,87,34,0.3)] mb-10">
-                <iframe src="https://player.vimeo.com/video/1178445309?autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0" 
-                        frameborder="0" 
-                        allow="autoplay; fullscreen; picture-in-picture" 
-                        allowfullscreen
-                        class="w-full h-full">
-                </iframe>
-            </div>
+            <vturb-smartplayer id="vid-69b26f6aa10d9a398ab8f2d0" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
+            <script type="text/javascript">
+                var s=document.createElement('script');
+                s.src='https://scripts.converteai.net/446a5c1f-ec2e-49c8-93d5-e9e4db88bf29/players/69b26f6aa10d9a398ab8f2d0/v4/player.js';
+                s.async=!0;
+                document.head.appendChild(s);
+            </script>
 
             <p class="text-gray-400 text-lg mb-10 leading-relaxed">
                 Treinos em vídeo, comunidade ativa, conteúdo educativo, planilhas, eventos e IA integrada — <span class="text-white font-bold">para quem está começando ou já corre há anos.</span>
             </p>
 
-            <a href="https://pay.cakto.com.br/358a8no?affiliate=8DzME6oN" target="_blank" rel="noopener noreferrer" class="block">
+            <a href="#checkout-anual" class="block">
                 <button class="w-full bg-orange text-white font-black px-8 py-6 rounded-2xl flex items-center justify-center gap-3 text-lg shadow-[0_10px_30px_rgba(255,87,34,0.3)] btn-hover animate-pulse-cta">
                     Entrar para a comunidade <span class="text-2xl">→</span>
                 </button>
@@ -255,7 +259,7 @@
                 A maioria dos corredores enfrenta os mesmos obstáculos. O X-RUN Team resolve os quatro de uma vez.
             </p>
 
-            <a href="https://pay.cakto.com.br/358a8no?affiliate=8DzME6oN" target="_blank" rel="noopener noreferrer" class="block">
+            <a href="#checkout-anual" class="block">
                 <button class="w-full bg-orange text-white font-black px-8 py-6 rounded-2xl flex items-center justify-center gap-3 text-lg btn-hover">
                     Conheça a solução <span class="text-2xl">→</span>
                 </button>
@@ -544,7 +548,7 @@
                     <p class="text-orange font-bold uppercase tracking-widest text-sm">— Anderson Jr</p>
                 </div>
 
-                <a href="https://pay.cakto.com.br/358a8no?affiliate=8DzME6oN" target="_blank" rel="noopener noreferrer" class="block">
+                <a href="#checkout-anual" class="block">
                     <button class="w-full bg-orange text-white font-black px-8 py-6 rounded-2xl flex items-center justify-center gap-3 text-lg mt-12 shadow-[0_10px_30px_rgba(255,87,34,0.3)] btn-hover">
                         Entrar para a comunidade <span class="text-2xl">→</span>
                     </button>
@@ -706,7 +710,7 @@
                 </div>
 
                 <!-- Card ANUAL -->
-                <div class="bg-orange p-1 px-1 rounded-[2.5rem] hover-effect">
+                <div id="checkout-anual" class="bg-orange p-1 px-1 rounded-[2.5rem] hover-effect">
                     <div class="bg-[#000] p-10 rounded-[2.4rem] text-left relative overflow-hidden">
                         <!-- Selo Destaque -->
                         <div class="bg-orange text-white text-[10px] font-black px-4 py-2 rounded-full w-fit mb-8 flex items-center gap-2">

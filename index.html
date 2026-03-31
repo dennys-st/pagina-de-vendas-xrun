@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-RUN Team | Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=aspect-ratio"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #FF5722;
+            --bg-black: #000000;
+            --bg-card: #121212;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-black); 
+            color: white; 
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .text-orange { color: var(--primary-orange); }
+        .bg-orange { background-color: var(--primary-orange); }
+        .border-orange { border-color: var(--primary-orange); }
+
+        /* Typography - Impact Sans Bold */
+        .h-impact {
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+        }
+
+        /* Video Player Placeholder Style */
+        .video-container {
+            background-color: #000000;
+            width: 100%;
+            aspect-ratio: 1/1; /* Square as per Image 1/2 */
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Problem Card Style */
+        .card-problem {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* iPhone 12 Layout Mockup */
+        .iphone-12-container {
+            max-width: 430px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Scrollable List */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Infinite Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            position: relative;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+        }
+
+        .marquee-content {
+            display: flex;
+            gap: 2.5rem;
+            width: max-content;
+            animation: marquee 40s linear infinite;
+        }
+
+        .phone-card {
+            height: 500px;
+            width: auto;
+            background-color: var(--bg-card);
+            border-radius: 2.5rem;
+            border: 8px solid #1f1f1f;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        /* Ecosystem Functional Cards */
+        .functional-card {
+            background-color: var(--bg-card);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .functional-icon {
+            background-color: rgba(255, 87, 34, 0.1);
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Animations & Hover Effects */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hover Scale & Glow */
+        .hover-effect {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .hover-effect:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 40px rgba(255, 87, 34, 0.2);
+            border-color: var(--primary-orange);
+        }
+
+        .btn-hover {
+            transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-hover:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+            box-shadow: 0 0 25px rgba(255, 87, 34, 0.5);
+        }
+
+        .btn-hover:active {
+            transform: scale(0.95);
+        }
+
+        /* Main CTA Pulse */
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 87, 34, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 87, 34, 0); }
+        }
+
+        .animate-pulse-cta {
+            animation: pulse-glow 2s infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="iphone-12-container">
+        
+        <!-- HEADER -->
+        <header class="flex justify-center items-center py-6 fade-in-up">
+            <div class="flex items-center gap-2">
+                <img src="xrun-logo.png" alt="X-RUN" class="h-10 w-10">
+                <span class="text-xl font-black uppercase tracking-tighter">X-RUN <span class="text-orange">Team</span></span>
+            </div>
+        </header>
+
+        <!-- SEÇÃO 1: HERO -->
+        <section class="pt-4 pb-12 fade-in-up">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 bg-[#1a0d08] border border-orange/20 px-4 py-2 rounded-full mb-8">
+                <div class="w-2 h-2 bg-orange rounded-full animate-pulse"></div>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-orange">+ DE 500 CORREDORES JÁ FAZEM PARTE</span>
+            </div>
+
+            <h1 class="text-5xl h-impact mb-10">
+                TUDO QUE O <br> <span class="text-orange">CORREDOR</span> <br> PRECISA. EM UM SO LUGAR.
+            </h1>
+
+            <!-- Vimeo Player -->
+            <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-[0_0_30px_rgba(255,87,34,0.3)] mb-10">
+                <iframe src="https://player.vimeo.com/video/1178445309?autoplay=1&loop=1&muted=1&title=0&byline=0&portrait=0" 
+                        frameborder="0" 
+                        allow="autoplay; fullscreen; picture-in-picture" 
+                        allowfullscreen
+                        class="w-full h-full">
+                </iframe>
+            </div>
+
+            <p class="text-gray-400 text-lg mb-10 leading-relaxed">
+                Treinos em vídeo, comunidade ativa, conteúdo educativo, planilhas, eventos e IA integrada — <span class="text-white font-bold">para quem está começando ou já corre há anos.</span>
+            </p>
+
+            <a href="https://pay.cakto.com.br/358a8no?affiliate=8DzME6oN" target="_blank" rel="noopener noreferrer" class="block">
+                <button class="w-full bg-orange text-white font-black px-8 py-6 rounded-2xl flex items-center justify-center gap-3 text-lg shadow-[0_10px_30px_rgba(255,87,34,0.3)] btn-hover animate-pulse-cta">
+                    Entrar para a comunidade <span class="text-2xl">→</span>
+                </button>
+            </a>
+            <p class="text-center text-gray-600 text-sm mt-4">Sem compromisso · Cancele quando quiser</p>
+        </section>
+
+        <!-- SEÇÃO 2: CHECKLIST -->
+        <section class="pb-16 fade-in-up">
+            <div class="flex flex-wrap gap-y-4 gap-x-6">
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                    <span class="text-orange font-bold text-lg">✓</span> Comunidade ativa de corredores
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                    <span class="text-orange font-bold text-lg">✓</span> Conteúdo novo toda semana
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                    <span class="text-orange font-bold text-lg">✓</span> Funciona como app nativo (PWA)
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                    <span class="text-orange font-bold text-lg">✓</span> Garantia de 7 dias
+                </div>
+            </div>
+            
+            <!-- Indicator Scroll (Image 3) -->
+            <div class="mt-12 flex flex-col items-center gap-2 opacity-30">
+                <span class="text-[10px] font-bold uppercase tracking-[0.2em]">Role para baixo</span>
+                <div class="w-[1px] h-12 bg-gradient-to-b from-orange to-transparent"></div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: O PROBLEMA -->
+        <section class="py-16 fade-in-up">
+            <div class="flex items-center gap-2 mb-4">
+                <div class="h-[1px] w-8 bg-orange"></div>
+                <span class="text-orange font-bold uppercase tracking-widest text-xs">O PROBLEMA</span>
+            </div>
+            
+            <h2 class="text-4xl h-impact mb-8">
+                CORRER SOZINHO É DIFÍCIL. <br>
+                <span class="text-orange">CORRER COM SUPORTE É DIFERENTE.</span>
+            </h2>
+
+            <p class="text-gray-400 text-lg mb-10 leading-relaxed">
+                A maioria dos corredores enfrenta os mesmos obstáculos. O X-RUN Team resolve os quatro de uma vez.
+            </p>
+
+            <a href="https://pay.cakto.com.br/358a8no?affiliate=8DzME6oN" target="_blank" rel="noopener noreferrer" class="block">
+                <button class="w-full bg-orange text-white font-black px-8 py-6 rounded-2xl flex items-center justify-center gap-3 text-lg btn-hover">
+                    Conheça a solução <span class="text-2xl">→</span>
+                </button>
+            </a>
+        </section>
+
+        <!-- SEÇÃO 4: CARDS DE PROBLEMA -->
+        <section class="py-8 space-y-4 fade-in-up">
+            <div class="card-problem hover-effect">
+                <span class="text-2xl">🤨</span>
+                <p class="font-bold text-gray-300">Sem método você se machuca.</p>
+            </div>
+            <div class="card-problem hover-effect">
+                <span class="text-2xl">😔</span>
+                <p class="font-bold text-gray-300">Sem comunidade você desiste.</p>
+            </div>
+            <div class="card-problem hover-effect">
+                <span class="text-2xl">😵</span>
+                <p class="font-bold text-gray-300">Sem conteúdo você fica perdido.</p>
+            </div>
+            <div class="card-problem hover-effect">
+                <span class="text-2xl">📉</span>
+                <p class="font-bold text-gray-300">Sem acompanhamento você não evolui.</p>
+            </div>
+            <!-- Destaque Card -->
+            <div class="card-problem border-orange/40 bg-orange/5 hover-effect">
+                <p class="font-bold text-orange text-lg">O X-RUN Team resolve os quatro de uma vez.</p>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 5: APP PREVIEW -->
+        <section class="py-24 overflow-hidden fade-in-up">
+            <div class="text-center mb-16">
+                <div class="flex items-center justify-center gap-4 mb-4">
+                    <div class="h-[1px] w-8 bg-orange"></div>
+                    <span class="text-orange font-bold uppercase tracking-widest text-xs">Conheça o App</span>
+                    <div class="h-[1px] w-8 bg-orange"></div>
+                </div>
+                <h2 class="text-4xl h-impact">
+                    VEJA O APP <br> <span class="text-orange">POR DENTRO.</span>
+                </h2>
+                <p class="text-gray-400 mt-6 leading-relaxed">
+                    Uma plataforma completa pensada para sua evolução como corredor.
+                </p>
+            </div>
+
+            <!-- Infinite Marquee Carousel -->
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    <!-- First Set of Screens -->
+                    <div class="phone-card hover-effect"><img src="app-screen-home.png" alt="Home" class="h-full w-auto object-contain"></div>
+                    <div class="phone-card hover-effect"><img src="app-screen-treinos.png" alt="Treinos" class="h-full w-auto object-contain"></div>
+                    <div class="phone-card hover-effect"><img src="app-screen-planilha.png" alt="Planilha" class="h-full w-auto object-contain"></div>
+                    <div class="phone-card hover-effect"><img src="app-screen-conteudos-.png" alt="Conteúdos" class="h-full w-auto object-contain"></div>
+                    <div class="phone-card hover-effect"><img src="app-screen-progresso.png" alt="Progresso" class="h-full w-auto object-contain"></div>
+                    <!-- Duplicate Set for Seamless Loop -->
+                    <div class="phone-card hover-effect"><img src="app-screen-home.png" alt="Home" class="h-full w-auto object-contain"></div>
+                    <div class="phone-card hover-effect"><img src="app-screen-treinos.png" alt="Treinos" class="h-full w-auto object-contain"></div>
+                    <div class="phone-card hover-effect"><img src="app-screen-planilha.png" alt="Planilha" class="h-full w-auto object-contain"></div>
+                    <div class="phone-card hover-effect"><img src="app-screen-conteudos-.png" alt="Conteúdos" class="h-full w-auto object-contain"></div>
+                    <div class="phone-card hover-effect"><img src="app-screen-progresso.png" alt="Progresso" class="h-full w-auto object-contain"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 6: ECOSSISTEMA -->
+        <section class="py-24 fade-in-up">
+            <div class="flex items-center gap-2 mb-4">
+                <div class="h-[1px] w-8 bg-orange"></div>
+                <span class="text-orange font-bold uppercase tracking-widest text-xs">Ecossistema Completo</span>
+            </div>
+            
+            <h2 class="text-4xl h-impact mb-6 leading-tight">
+                UM APP. UM <br> ECOSSISTEMA <span class="text-orange">INTEIRO.</span>
+            </h2>
+            <p class="text-gray-400 text-lg mb-12 leading-relaxed">
+                Tudo que você precisa para começar, evoluir e nunca mais parar.
+            </p>
+
+            <div class="space-y-6">
+                <!-- Card 1: Treinos em Vídeo -->
+                <div class="functional-card hover-effect">
+                    <div class="functional-icon">
+                        <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div>
+                        <span class="text-orange text-[10px] font-bold uppercase tracking-widest mb-1 block">Séries Completas</span>
+                        <h3 class="text-2xl h-impact mb-3">Treinos em Vídeo</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Séries completas de fortalecimento, pliometria, musculação, alongamento e muito mais — com instrução passo a passo.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Comunidade Viva -->
+                <div class="functional-card hover-effect">
+                    <div class="functional-icon">
+                        <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <div>
+                        <span class="text-orange text-[10px] font-bold uppercase tracking-widest mb-1 block">Feed Social Exclusivo</span>
+                        <h3 class="text-2xl h-impact mb-3">Comunidade Viva</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Feed social exclusivo para corredores. Poste seus treinos, tire dúvidas e encontre parceiros de corrida.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Conteúdo Educativo -->
+                <div class="functional-card hover-effect">
+                    <div class="functional-icon">
+                        <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                    <div>
+                        <span class="text-orange text-[10px] font-bold uppercase tracking-widest mb-1 block">Vídeos e Artigos</span>
+                        <h3 class="text-2xl h-impact mb-3">Conteúdo Educativo</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Vídeos e artigos sobre tudo: tênis ideal, alimentação, lesões, preparação para provas e muito mais.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Planilhas de Treino -->
+                <div class="functional-card hover-effect">
+                    <div class="functional-icon">
+                        <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <div>
+                        <span class="text-orange text-[10px] font-bold uppercase tracking-widest mb-1 block">Por Lucas Guerra</span>
+                        <h3 class="text-2xl h-impact mb-3">Planilhas de Treino</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Planilhas para 5km, 10km, meia e maratona elaboradas pelo preparador Lucas Guerra. Ou faça upload da sua planilha personalizada.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5: IA Integrada -->
+                <div class="functional-card hover-effect">
+                    <div class="functional-icon">
+                        <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div>
+                        <span class="text-orange text-[10px] font-bold uppercase tracking-widest mb-1 block">Inteligência Artificial</span>
+                        <h3 class="text-2xl h-impact mb-3">IA Integrada</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Análise de IMC com recomendações, análise nutricional por foto do prato e suporte inteligente em tempo real.</p>
+                    </div>
+                </div>
+
+                <!-- Card 6: Evolução Rastreável -->
+                <div class="functional-card hover-effect">
+                    <div class="functional-icon">
+                        <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    </div>
+                    <div>
+                        <span class="text-orange text-[10px] font-bold uppercase tracking-widest mb-1 block">Métricas Reais</span>
+                        <h3 class="text-2xl h-impact mb-3">Evolução Rastreável</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Registre km, tempo e hidratação. Acompanhe gráficos reais da sua evolução semana a semana.</p>
+                    </div>
+                </div>
+
+                <!-- Card 7: Testes de Performance -->
+                <div class="functional-card hover-effect">
+                    <div class="functional-icon">
+                        <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <div>
+                        <span class="text-orange text-[10px] font-bold uppercase tracking-widest mb-1 block">Condicionamento Real</span>
+                        <h3 class="text-2xl h-impact mb-3">Testes de Performance</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Teste de Cooper, FC Máxima e Conconi para medir seu condicionamento real e ajustar o treino.</p>
+                    </div>
+                </div>
+
+                <!-- Card 8: Eventos & Parceiros -->
+                <div class="functional-card hover-effect">
+                    <div class="functional-icon">
+                        <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div>
+                        <span class="text-orange text-[10px] font-bold uppercase tracking-widest mb-1 block">Provas e Descontos</span>
+                        <h3 class="text-2xl h-impact mb-3">Eventos & Parceiros</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Calendário de provas com inscrição direta + descontos exclusivos em equipamentos e suplementos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 7: VÍDEOS EXCLUSIVOS -->
+        <section class="py-24 bg-black border-t border-white/5 fade-in-up">
+            <div class="container-mobile">
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="h-[1px] w-8 bg-orange"></div>
+                    <span class="text-orange font-bold uppercase tracking-widest text-xs">Conteúdos em Vídeo</span>
+                    <div class="h-[1px] w-8 bg-orange"></div>
+                </div>
+                <h2 class="text-4xl h-impact mb-6">
+                    VÍDEOS EXCLUSIVOS <span class="text-orange">SOBRE CORRIDA.</span>
+                </h2>
+                <p class="text-gray-400 text-lg mb-12 leading-relaxed">
+                    Fortalecimento, pliometria, dicas de nutrição, prevenção de lesões e respostas para as dúvidas mais comuns de corredores — com novos conteúdos toda semana.
+                </p>
+
+                <h3 class="text-xs font-bold uppercase tracking-widest mb-6 opacity-60">Treine com Anderson</h3>
+                
+                <!-- Horizontal Carousel -->
+                <div class="flex gap-4 overflow-x-auto no-scrollbar -mx-6 px-6">
+                    <!-- Card Vídeo 1 -->
+                    <div class="min-w-[160px] aspect-[3/4] rounded-2xl bg-zinc-900 relative overflow-hidden flex-shrink-0 hover-effect">
+                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover opacity-60">
+                        <div class="absolute bottom-3 left-3 right-3">
+                            <span class="bg-orange text-[8px] font-black px-2 py-1 rounded-full uppercase mb-1 block w-fit">Fortalecimento</span>
+                            <span class="text-[10px] font-bold">8 vídeos</span>
+                        </div>
+                    </div>
+                    <!-- Card Vídeo 2 -->
+                    <div class="min-w-[160px] aspect-[3/4] rounded-2xl bg-zinc-900 relative overflow-hidden flex-shrink-0 hover-effect">
+                        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover opacity-60">
+                        <div class="absolute bottom-3 left-3 right-3">
+                            <span class="bg-orange text-[8px] font-black px-2 py-1 rounded-full uppercase mb-1 block w-fit">Joelhos</span>
+                            <span class="text-[10px] font-bold">6 vídeos</span>
+                        </div>
+                    </div>
+                    <!-- Card Vídeo 3 -->
+                    <div class="min-w-[160px] aspect-[3/4] rounded-2xl bg-zinc-900 relative overflow-hidden flex-shrink-0 hover-effect">
+                        <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover opacity-60">
+                        <div class="absolute bottom-3 left-3 right-3">
+                            <span class="bg-orange text-[8px] font-black px-2 py-1 rounded-full uppercase mb-1 block w-fit">Full Body</span>
+                            <span class="text-[10px] font-bold">12 vídeos</span>
+                        </div>
+                    </div>
+                    <!-- Card Vídeo 4 -->
+                    <div class="min-w-[160px] aspect-[3/4] rounded-2xl bg-zinc-900 relative overflow-hidden flex-shrink-0 hover-effect">
+                        <img src="https://images.unsplash.com/photo-1594882645126-14020914d58d?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover opacity-60">
+                        <div class="absolute bottom-3 left-3 right-3">
+                            <span class="bg-orange text-[8px] font-black px-2 py-1 rounded-full uppercase mb-1 block w-fit">Pliometria</span>
+                            <span class="text-[10px] font-bold">7 vídeos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 8: QUEM ESTÁ POR TRÁS -->
+        <section class="py-24 fade-in-up">
+            <div class="container-mobile">
+                <div class="flex items-center gap-2 mb-8">
+                    <div class="h-[1px] w-8 bg-orange"></div>
+                    <span class="text-orange font-bold uppercase tracking-widest text-xs">Quem está por trás</span>
+                </div>
+
+                <div class="relative rounded-[2rem] overflow-hidden aspect-[4/5] mb-12 shadow-2xl hover-effect">
+                    <img src="anderson-coach.jpg" alt="Anderson Jr" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div class="absolute bottom-8 left-8 right-8">
+                        <h3 class="text-4xl h-impact mb-2">Anderson Jr</h3>
+                        <p class="text-orange font-bold uppercase tracking-widest text-xs">Ultramaratonista · Fundador do X-RUN Team</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 text-center border-t border-white/10 pt-12">
+                    <div>
+                        <p class="text-orange text-3xl h-impact mb-2">500+</p>
+                        <p class="text-[8px] font-bold uppercase tracking-widest text-gray-500 leading-tight">Corredores na Comunidade</p>
+                    </div>
+                    <div>
+                        <p class="text-orange text-3xl h-impact mb-2">100+</p>
+                        <p class="text-[8px] font-bold uppercase tracking-widest text-gray-500 leading-tight">Vídeos e Conteúdos</p>
+                    </div>
+                    <div>
+                        <p class="text-orange text-3xl h-impact mb-2">1 ANO</p>
+                        <p class="text-[8px] font-bold uppercase tracking-widest text-gray-500 leading-tight">De Zero a Ultramaratona</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 9: BIOGRAFIA -->
+        <section class="py-16 bg-[#050505] fade-in-up">
+            <div class="container-mobile">
+                <h2 class="text-3xl h-impact mb-8">
+                    CURADO POR ANDERSON JR E PREPARADOR <span class="text-orange">LUCAS GUERRA.</span>
+                </h2>
+                <div class="space-y-6 text-gray-400 text-lg leading-relaxed">
+                    <p>Anderson superou 10 anos de vício através da corrida e se tornou ultramaratonista em 1 ano.</p>
+                    <p>Lucas Guerra é o preparador físico responsável pelas planilhas e pelos módulos de treino do app.</p>
+                    <p>Juntos, criaram o conteúdo que guia cada etapa da sua jornada — do primeiro quilômetro à maratona.</p>
+                </div>
+
+                <!-- Quote Card -->
+                <div class="mt-16 bg-zinc-900/50 border border-orange/20 p-8 rounded-[2rem] relative hover-effect">
+                    <span class="absolute top-6 right-8 text-6xl text-orange opacity-20 font-serif leading-none">" "</span>
+                    <p class="text-xl italic font-medium text-gray-200 mb-6 leading-relaxed">
+                        "A corrida salvou minha vida. Agora quero ajudar outros a descobrirem o poder que ela tem."
+                    </p>
+                    <p class="text-orange font-bold uppercase tracking-widest text-sm">— Anderson Jr</p>
+                </div>
+
+                <a href="https://pay.cakto.com.br/358a8no?affiliate=8DzME6oN" target="_blank" rel="noopener noreferrer" class="block">
+                    <button class="w-full bg-orange text-white font-black px-8 py-6 rounded-2xl flex items-center justify-center gap-3 text-lg mt-12 shadow-[0_10px_30px_rgba(255,87,34,0.3)] btn-hover">
+                        Entrar para a comunidade <span class="text-2xl">→</span>
+                    </button>
+                </a>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 10: PLANILHAS INTRO -->
+        <section class="py-24 border-t border-white/5 fade-in-up">
+            <div class="container-mobile text-center">
+                <div class="flex items-center justify-center gap-2 mb-4">
+                    <div class="h-[1px] w-8 bg-orange"></div>
+                    <span class="text-orange font-bold uppercase tracking-widest text-xs">Planilhas</span>
+                    <div class="h-[1px] w-8 bg-orange"></div>
+                </div>
+                <h2 class="text-4xl h-impact mb-8">
+                    PLANILHAS DE TREINO <br> <span class="text-orange">INCLUSAS.</span>
+                </h2>
+                <p class="text-gray-400 text-lg max-w-sm mx-auto">
+                    5km, 10km, meia e maratona — elaboradas pelo preparador Lucas Guerra.
+                </p>
+
+                <div class="mt-12 space-y-4 text-left">
+                    <!-- Planilha Geral -->
+                    <div class="bg-zinc-900/30 border border-white/5 p-8 rounded-[2rem] flex flex-col gap-4 hover-effect">
+                        <div class="bg-orange/10 w-12 h-12 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl h-impact mb-1">PLANILHA GERAL</h3>
+                            <p class="text-gray-500 text-sm font-bold">Inclusa na assinatura</p>
+                        </div>
+                    </div>
+                    <!-- Planilha Personalizada -->
+                    <div class="bg-zinc-900/30 border border-white/5 p-8 rounded-[2rem] flex flex-col gap-4 opacity-60 hover-effect">
+                        <div class="bg-orange/10 w-12 h-12 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl h-impact mb-1">PLANILHA PERSONALIZADA</h3>
+                            <p class="text-gray-500 text-sm font-bold">Disponível separadamente</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 11: COMPARATIVO DETALHADO -->
+        <section class="py-24 bg-black border-t border-white/5 fade-in-up">
+            <div class="container-mobile">
+                <div class="flex items-center justify-center gap-2 mb-4">
+                    <div class="h-[1px] w-8 bg-orange"></div>
+                    <span class="text-orange font-bold uppercase tracking-widest text-xs text-center">Comparativo</span>
+                    <div class="h-[1px] w-8 bg-orange"></div>
+                </div>
+                <h2 class="text-3xl h-impact mb-16 text-center leading-tight">
+                    POR QUE O X-RUN É <span class="text-orange">DIFERENTE?</span>
+                </h2>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <!-- Column SEM -->
+                    <div class="space-y-3">
+                        <div class="bg-zinc-900/50 py-3 rounded-full text-center">
+                            <span class="text-[10px] font-black text-red-900 uppercase">✕ SEM X-RUN</span>
+                        </div>
+                        <div class="bg-zinc-900/30 p-4 rounded-2xl h-24 flex items-center gap-3 hover-effect">
+                            <span class="text-red-900 font-bold">✕</span>
+                            <p class="text-[10px] text-gray-600 font-bold leading-tight">Vídeos soltos no YouTube sem estrutura</p>
+                        </div>
+                        <div class="bg-zinc-900/30 p-4 rounded-2xl h-24 flex items-center gap-3 hover-effect">
+                            <span class="text-red-900 font-bold">✕</span>
+                            <p class="text-[10px] text-gray-600 font-bold leading-tight">Grupos de WhatsApp desorganizados</p>
+                        </div>
+                        <div class="bg-zinc-900/30 p-4 rounded-2xl h-24 flex items-center gap-3 hover-effect">
+                            <span class="text-red-900 font-bold">✕</span>
+                            <p class="text-[10px] text-gray-600 font-bold leading-tight">Planilhas genéricas da internet</p>
+                        </div>
+                        <div class="bg-zinc-900/30 p-4 rounded-2xl h-24 flex items-center gap-3 hover-effect">
+                            <span class="text-red-900 font-bold">✕</span>
+                            <p class="text-[10px] text-gray-600 font-bold leading-tight">Sem acompanhamento de evolução</p>
+                        </div>
+                        <div class="bg-zinc-900/30 p-4 rounded-2xl h-24 flex items-center gap-3 hover-effect">
+                            <span class="text-red-900 font-bold">✕</span>
+                            <p class="text-[10px] text-gray-600 font-bold leading-tight">Dúvidas sem resposta especializada</p>
+                        </div>
+                    </div>
+                    <!-- Column COM -->
+                    <div class="space-y-3">
+                        <div class="bg-orange/10 py-3 rounded-full text-center border border-orange/20">
+                            <span class="text-[10px] font-black text-orange uppercase">✓ COM X-RUN</span>
+                        </div>
+                        <div class="bg-orange/5 border border-orange/10 p-4 rounded-2xl h-24 flex items-center gap-3 hover-effect">
+                            <span class="text-orange font-bold">✓</span>
+                            <p class="text-[10px] text-gray-300 font-bold leading-tight">Treinos em vídeo organizados por nível</p>
+                        </div>
+                        <div class="bg-orange/5 border border-orange/10 p-4 rounded-2xl h-24 flex items-center gap-3 hover-effect">
+                            <span class="text-orange font-bold">✓</span>
+                            <p class="text-[10px] text-gray-300 font-bold leading-tight">Comunidade exclusiva de corredores</p>
+                        </div>
+                        <div class="bg-orange/5 border border-orange/10 p-4 rounded-2xl h-24 flex items-center gap-3 hover-effect">
+                            <span class="text-orange font-bold">✓</span>
+                            <p class="text-[10px] text-gray-300 font-bold leading-tight">Planilhas elaboradas por preparador físico</p>
+                        </div>
+                        <div class="bg-orange/5 border border-orange/10 p-4 rounded-2xl h-24 flex items-center gap-3 hover-effect">
+                            <span class="text-orange font-bold">✓</span>
+                            <p class="text-[10px] text-gray-300 font-bold leading-tight">Gráficos reais de evolução</p>
+                        </div>
+                        <div class="bg-orange/5 border border-orange/10 p-4 rounded-2xl h-24 flex items-center gap-3 hover-effect">
+                            <span class="text-orange font-bold">✓</span>
+                            <p class="text-[10px] text-gray-300 font-bold leading-tight">IA para tirar dúvidas a qualquer hora</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 12: APP NATIVO -->
+        <section class="py-16 fade-in-up">
+            <div class="container-mobile">
+                <div class="bg-zinc-900/40 border border-white/5 p-10 rounded-[2.5rem] text-center hover-effect">
+                    <div class="bg-orange/10 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-8">
+                        <svg class="w-8 h-8 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl h-impact mb-6">FUNCIONA COMO APP NATIVO NO SEU CELULAR.</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-10">
+                        Instale direto pelo navegador — sem precisar da App Store ou Google Play.
+                    </p>
+                    <div class="flex justify-center items-center gap-4 text-[10px] font-black tracking-widest text-gray-500">
+                        <span>ANDROID</span>
+                        <span class="w-1 h-1 bg-orange rounded-full"></span>
+                        <span>IOS</span>
+                        <span class="w-1 h-1 bg-orange rounded-full"></span>
+                        <span>ATUALIZAÇÃO AUTOMÁTICA</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 13: PREÇOS -->
+        <section class="py-24 border-t border-white/5 fade-in-up">
+            <div class="container-mobile text-center">
+                <div class="flex items-center justify-center gap-2 mb-4">
+                    <div class="h-[1px] w-8 bg-orange"></div>
+                    <span class="text-orange font-bold uppercase tracking-widest text-xs">Planos</span>
+                    <div class="h-[1px] w-8 bg-orange"></div>
+                </div>
+                <h2 class="text-4xl h-impact mb-10">
+                    ENTRE NA COMUNIDADE POR MENOS DE <span class="text-orange text-5xl">R$1/DIA</span>
+                </h2>
+
+                <!-- Badge Alunos -->
+                <div class="inline-flex items-center gap-3 bg-zinc-900/50 px-6 py-3 rounded-full mb-16">
+                    <div class="flex -space-x-3">
+                        <img src="https://i.pravatar.cc/100?u=1" class="w-8 h-8 rounded-full border-2 border-black">
+                        <img src="https://i.pravatar.cc/100?u=2" class="w-8 h-8 rounded-full border-2 border-black">
+                        <img src="https://i.pravatar.cc/100?u=3" class="w-8 h-8 rounded-full border-2 border-black">
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Mais de 500 corredores já fazem parte</p>
+                </div>
+
+                <!-- Card ANUAL -->
+                <div class="bg-orange p-1 px-1 rounded-[2.5rem] hover-effect">
+                    <div class="bg-[#000] p-10 rounded-[2.4rem] text-left relative overflow-hidden">
+                        <!-- Selo Destaque -->
+                        <div class="bg-orange text-white text-[10px] font-black px-4 py-2 rounded-full w-fit mb-8 flex items-center gap-2">
+                            <span>⚡</span> Melhor custo-benefício
+                        </div>
+
+                        <h3 class="text-2xl h-impact mb-8 text-gray-400">ANUAL</h3>
+                        
+                        <div class="mb-10">
+                            <p class="text-gray-600 line-through font-bold mb-1">R$ 468,00</p>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-6xl h-impact text-white">R$ 248,91</span>
+                                <span class="text-gray-500 font-bold">/ano</span>
+                            </div>
+                            <p class="text-orange font-bold mt-2">✦ Economize R$ 219,09</p>
+                        </div>
+
+                        <a href="https://pay.cakto.com.br/358a8no?affiliate=8DzME6oN" target="_blank" rel="noopener noreferrer" class="block">
+                            <button class="w-full bg-white text-orange font-black py-6 rounded-2xl text-xl h-impact mb-12 hover:bg-orange hover:text-white transition-colors btn-hover">
+                                Escolher plano <span class="ml-2">→</span>
+                            </button>
+                        </a>
+
+                        <ul class="space-y-5">
+                            <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                                <span class="text-orange">✓</span> Treinos em vídeo completos
+                            </li>
+                            <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                                <span class="text-orange">✓</span> Comunidade exclusiva de corredores
+                            </li>
+                            <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                                <span class="text-orange">✓</span> Conteúdo educativo semanal
+                            </li>
+                            <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                                <span class="text-orange">✓</span> Planilhas por Lucas Guerra
+                            </li>
+                            <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                                <span class="text-orange">✓</span> IA integrada (IMC, nutrição)
+                            </li>
+                            <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                                <span class="text-orange">✓</span> Testes de performance
+                            </li>
+                            <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                                <span class="text-orange">✓</span> Calendário de eventos
+                            </li>
+                            <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                                <span class="text-orange">✓</span> Descontos de parceiros
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card MENSAL -->
+                <div class="bg-[#121212] p-10 rounded-[2.5rem] text-left relative overflow-hidden mt-6 hover-effect">
+                    <!-- Badge Lançamento -->
+                    <div class="bg-orange/10 border border-orange/20 text-orange text-[10px] font-black px-4 py-3 rounded-full w-fit mb-8 flex items-center gap-2">
+                        <span>🔥</span> 100 PRIMEIROS · PREÇO DE LANÇAMENTO
+                    </div>
+
+                    <h3 class="text-2xl h-impact mb-8 text-gray-400">MENSAL</h3>
+                    
+                    <div class="mb-10">
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-6xl h-impact text-white">R$ 39,00</span>
+                            <span class="text-gray-500 font-bold">/mês</span>
+                        </div>
+                    </div>
+
+                    <a href="https://pay.cakto.com.br/jte2scs_753993?affiliate=8DzME6oN" target="_blank" rel="noopener noreferrer" class="block">
+                        <button class="w-full bg-zinc-800 text-white font-black py-6 rounded-2xl text-xl h-impact mb-12 hover:bg-orange transition-colors btn-hover">
+                            Quero esse! <span class="ml-2">→</span>
+                        </button>
+                    </a>
+
+                    <ul class="space-y-5">
+                        <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                            <span class="text-orange">✓</span> Treinos em vídeo completos
+                        </li>
+                        <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                            <span class="text-orange">✓</span> Comunidade exclusiva de corredores
+                        </li>
+                        <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                            <span class="text-orange">✓</span> Conteúdo educativo semanal
+                        </li>
+                        <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                            <span class="text-orange">✓</span> Planilhas por Lucas Guerra
+                        </li>
+                        <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                            <span class="text-orange">✓</span> IA integrada (IMC, nutrição)
+                        </li>
+                        <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                            <span class="text-orange">✓</span> Testes de performance
+                        </li>
+                        <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                            <span class="text-orange">✓</span> Calendário de eventos
+                        </li>
+                        <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                            <span class="text-orange">✓</span> Descontos de parceiros
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card TRIMESTRAL -->
+                <div class="bg-[#121212] p-10 rounded-[2.5rem] text-left relative overflow-hidden mt-6 hover-effect">
+                    <h3 class="text-2xl h-impact mb-8 text-gray-400">TRIMESTRAL</h3>
+                    
+                    <div class="mb-10">
+                        <p class="text-gray-600 line-through font-bold mb-1">R$ 117,00</p>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-6xl h-impact text-white">R$ 97,00</span>
+                            <span class="text-gray-500 font-bold">/trimestre</span>
+                        </div>
+                        <p class="text-orange font-bold mt-2">✦ Economize R$ 20,00</p>
+                    </div>
+
+                    <a href="https://pay.cakto.com.br/mudynox?affiliate=8DzME6oN" target="_blank" rel="noopener noreferrer" class="block">
+                        <button class="w-full bg-zinc-800 text-white font-black py-6 rounded-2xl text-xl h-impact mb-12 hover:bg-orange transition-colors btn-hover">
+                            Escolher plano <span class="ml-2">→</span>
+                        </button>
+                    </a>
+
+                    <ul class="space-y-5">
+                        <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                            <span class="text-orange">✓</span> Treinos em vídeo completos
+                        </li>
+                        <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                            <span class="text-orange">✓</span> Comunidade exclusiva de corredores
+                        </li>
+                        <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                            <span class="text-orange">✓</span> Conteúdo educativo semanal
+                        </li>
+                        <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                            <span class="text-orange">✓</span> Planilhas por Lucas Guerra
+                        </li>
+                        <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                            <span class="text-orange">✓</span> IA integrada (IMC, nutrição)
+                        </li>
+                        <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                            <span class="text-orange">✓</span> Testes de performance
+                        </li>
+                        <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                            <span class="text-orange">✓</span> Calendário de eventos
+                        </li>
+                        <li class="flex items-center gap-4 text-sm font-bold text-gray-300">
+                            <span class="text-orange">✓</span> Descontos de parceiros
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 14: GARANTIA & TRUST -->
+        <section class="py-24 bg-black fade-in-up">
+            <div class="container-mobile text-center">
+                <div class="relative inline-block mb-12">
+                    <!-- Brilho Laranja -->
+                    <div class="absolute inset-0 bg-orange/30 blur-[60px] rounded-full scale-150"></div>
+                    <!-- Ícone de Escudo -->
+                    <div class="relative bg-zinc-900/50 p-8 rounded-full border border-white/10 hover-effect">
+                        <svg class="w-20 h-20 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <h2 class="text-3xl h-impact mb-8 leading-tight">
+                    GARANTIA TOTAL — <br><span class="text-orange">7 DIAS OU SEU DINHEIRO DE VOLTA</span>
+                </h2>
+                
+                <p class="text-gray-400 text-lg leading-relaxed max-w-sm mx-auto mb-16">
+                    Teste por 7 dias completos. Se não ficar satisfeito, devolvemos <span class="text-white font-black">100% — sem perguntas, sem burocracia.</span>
+                </p>
+
+                <!-- Cards de Confiança (Trust) -->
+                <div class="grid grid-cols-1 gap-6">
+                    <!-- ACESSO IMEDIATO -->
+                    <div class="bg-[#121212] p-10 rounded-[2.5rem] border border-white/5 hover-effect">
+                        <div class="bg-orange/10 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl h-impact mb-4 uppercase tracking-tighter">Acesso Imediato</h3>
+                        <p class="text-gray-500 text-sm font-bold leading-relaxed">
+                            Assim que o pagamento é confirmado, você já tem acesso completo à plataforma.
+                        </p>
+                    </div>
+
+                    <!-- PAGAMENTO 100% SEGURO -->
+                    <div class="bg-[#121212] p-10 rounded-[2.5rem] border border-white/5 hover-effect">
+                        <div class="bg-orange/10 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl h-impact mb-4 uppercase tracking-tighter">Pagamento 100% Seguro</h3>
+                        <p class="text-gray-500 text-sm font-bold leading-relaxed">
+                            Seus dados são protegidos com criptografia de ponta a ponta em todas as transações.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 15: FAQ -->
+        <section class="py-24 border-t border-white/5 fade-in-up">
+            <div class="container-mobile">
+                <div class="flex items-center justify-center gap-2 mb-4">
+                    <div class="h-[1px] w-8 bg-orange"></div>
+                    <span class="text-orange font-bold uppercase tracking-widest text-xs">FAQ</span>
+                    <div class="h-[1px] w-8 bg-orange"></div>
+                </div>
+                <h2 class="text-3xl h-impact mb-16 text-center">
+                    PERGUNTAS <span class="text-orange">FREQUENTES</span>
+                </h2>
+
+                <div class="space-y-4">
+                    <!-- Item 1 -->
+                    <div class="faq-item bg-[#121212] rounded-[1.5rem] border border-white/5 overflow-hidden hover-effect">
+                        <button class="w-full p-6 text-left flex items-center justify-between gap-4" onclick="toggleFaq(this)">
+                            <span class="text-gray-300 font-bold text-sm">Preciso ter experiência com corrida?</span>
+                            <span class="text-orange text-2xl transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                            <div class="p-6 pt-0 text-gray-500 text-sm leading-relaxed">
+                                Não! O X-RUN Team foi desenhado para todos os níveis. Temos desde treinos de base para quem está começando do zero até conteúdos avançados para maratonistas experientes.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="faq-item bg-[#121212] rounded-[1.5rem] border border-white/5 overflow-hidden hover-effect">
+                        <button class="w-full p-6 text-left flex items-center justify-between gap-4" onclick="toggleFaq(this)">
+                            <span class="text-gray-300 font-bold text-sm">Como funciona o acesso ao app?</span>
+                            <span class="text-orange text-2xl transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                            <div class="p-6 pt-0 text-gray-500 text-sm leading-relaxed">
+                                Assim que seu pagamento for confirmado, você receberá um e-mail com as instruções de login e o link para instalar o PWA direto no seu celular em menos de 1 minuto.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="faq-item bg-[#121212] rounded-[1.5rem] border border-white/5 overflow-hidden hover-effect">
+                        <button class="w-full p-6 text-left flex items-center justify-between gap-4" onclick="toggleFaq(this)">
+                            <span class="text-gray-300 font-bold text-sm">O que está incluso na assinatura?</span>
+                            <span class="text-orange text-2xl transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                            <div class="p-6 pt-0 text-gray-500 text-sm leading-relaxed">
+                                Acesso total à comunidade, treinos em vídeo, planilhas de treino (5k, 10k, 21k e 42k), IA para dúvidas, conteúdos educativos semanais e descontos exclusivos em parceiros.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="faq-item bg-[#121212] rounded-[1.5rem] border border-white/5 overflow-hidden hover-effect">
+                        <button class="w-full p-6 text-left flex items-center justify-between gap-4" onclick="toggleFaq(this)">
+                            <span class="text-gray-300 font-bold text-sm">A planilha de treino é personalizada?</span>
+                            <span class="text-orange text-2xl transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                            <div class="p-6 pt-0 text-gray-500 text-sm leading-relaxed">
+                                As planilhas inclusas na assinatura são estruturadas por distância e nível. Para acompanhamento 100% individualizado, oferecemos a Consultoria Premium separadamente.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="faq-item bg-[#121212] rounded-[1.5rem] border border-white/5 overflow-hidden hover-effect">
+                        <button class="w-full p-6 text-left flex items-center justify-between gap-4" onclick="toggleFaq(this)">
+                            <span class="text-gray-300 font-bold text-sm">Posso cancelar quando quiser?</span>
+                            <span class="text-orange text-2xl transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                            <div class="p-6 pt-0 text-gray-500 text-sm leading-relaxed">
+                                Com certeza. O cancelamento pode ser feito de forma autônoma dentro da área do aluno, sem burocracia e sem precisar falar com ninguém.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="faq-item bg-[#121212] rounded-[1.5rem] border border-white/5 overflow-hidden hover-effect">
+                        <button class="w-full p-6 text-left flex items-center justify-between gap-4" onclick="toggleFaq(this)">
+                            <span class="text-gray-300 font-bold text-sm">Funciona no meu celular?</span>
+                            <span class="text-orange text-2xl transition-transform duration-300">+</span>
+                        </button>
+                        <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+                            <div class="p-6 pt-0 text-gray-500 text-sm leading-relaxed">
+                                Sim! O X-RUN funciona em todos os dispositivos (iOS e Android) através da tecnologia PWA, ocupando pouquíssimo espaço e com atualizações automáticas.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 16: CTA FINAL -->
+        <section class="py-24 bg-black relative overflow-hidden fade-in-up">
+            <!-- Glow de fundo -->
+            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-orange/20 blur-[120px] rounded-full"></div>
+            
+            <div class="container-mobile text-center relative z-10">
+                <div class="flex items-center justify-center gap-2 mb-4">
+                    <div class="h-[1px] w-8 bg-orange"></div>
+                    <span class="text-orange font-bold uppercase tracking-widest text-xs">Comece agora</span>
+                    <div class="h-[1px] w-8 bg-orange"></div>
+                </div>
+                
+                <h2 class="text-4xl h-impact mb-8 leading-tight">
+                    O ECOSSISTEMA COMPLETO <br> <span class="text-orange">DO CORREDOR.</span>
+                </h2>
+                
+                <p class="text-gray-400 text-lg leading-relaxed max-w-sm mx-auto mb-16">
+                    Comunidade, treino, conteúdo e evolução — tudo em um só lugar por menos de <span class="text-white font-black">R$1 por dia.</span>
+                </p>
+
+                <a href="https://pay.cakto.com.br/358a8no?affiliate=8DzME6oN" target="_blank" rel="noopener noreferrer" class="block">
+                    <button class="w-full bg-orange text-white font-black px-8 py-8 rounded-3xl flex items-center justify-center gap-3 text-xl shadow-[0_20px_50px_rgba(255,87,34,0.4)] btn-hover animate-pulse-cta">
+                        Entrar para a comunidade <span class="text-2xl">→</span>
+                    </button>
+                </a>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="py-16 bg-[#050505] border-t border-white/5 fade-in-up">
+            <div class="container-mobile text-center">
+                <!-- Trust Seals Reiteration -->
+                <div class="flex flex-wrap justify-center items-center gap-6 mb-16 text-gray-500 text-[10px] font-black tracking-widest uppercase">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-3 h-3 text-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M13 7H7v6h6V7z"/><path fill-rule="evenodd" d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm0 2h10v10H5V5z" clip-rule="evenodd"/></svg>
+                        <span>Acesso imediato</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-3 h-3 text-orange" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+                        <span>Pagamento seguro</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-3 h-3 text-orange" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.9L9.03 1.2a2 2 0 011.94 0l6.864 3.7A2 2 0 0119 6.62v6.76a2 2 0 01-1.166 1.82l-6.864 3.7a2 2 0 01-1.94 0l-6.864-3.7A2 2 0 011 13.38V6.62a2 2 0 011.166-1.72zM10 3L3 6.74v6.64L10 17l7-3.62V6.74L10 3z" clip-rule="evenodd"/></svg>
+                        <span>Garantia de 7 dias</span>
+                    </div>
+                </div>
+
+                <!-- Logo -->
+                <div class="mb-10">
+                    <div class="text-2xl font-black tracking-tighter text-white">
+                        X-RUN <span class="text-orange">Team</span>
+                    </div>
+                    <p class="text-gray-600 text-[10px] font-bold mt-2 uppercase tracking-[0.2em]">Transformação através do esporte</p>
+                </div>
+
+                <!-- Links -->
+                <div class="flex justify-center gap-8 mb-12 text-[10px] font-bold text-gray-500 uppercase">
+                    <a href="#" class="hover:text-white transition-colors">Termos de Uso</a>
+                    <a href="#" class="hover:text-white transition-colors">Privacidade</a>
+                </div>
+
+                <!-- Social Icons -->
+                <div class="flex justify-center gap-6 mb-16">
+                    <a href="#" class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center text-gray-500 hover:text-orange hover:bg-zinc-800 transition-all">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center text-gray-500 hover:text-orange hover:bg-zinc-800 transition-all">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 4-8 4z"/></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center text-gray-500 hover:text-orange hover:bg-zinc-800 transition-all">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                </div>
+
+                <div class="h-[1px] w-full bg-white/5 mb-8"></div>
+
+                <p class="text-gray-600 text-[10px] font-bold">
+                    © 2026 X-RUN TEAM. TODOS OS DIREITOS RESERVADOS.
+                </p>
+                
+                <div class="mt-8">
+                    <span class="bg-zinc-900/50 px-6 py-2 rounded-full text-[10px] font-black text-gray-600">xrun.team</span>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script>
+            // FAQ Toggle
+            function toggleFaq(button) {
+                const answer = button.nextElementSibling;
+                const icon = button.querySelector('span:last-child');
+                
+                if (answer.style.maxHeight) {
+                    answer.style.maxHeight = null;
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                    icon.style.transform = 'rotate(45deg)';
+                }
+            }
+
+            // Intersection Observer for Scroll Animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+        </script>
+
+    </div> <!-- End Container -->
+
+</body>
+</html>

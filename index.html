@@ -172,6 +172,44 @@
         .animate-pulse-cta {
             animation: pulse-glow 2s infinite;
         }
+
+        @keyframes whatsapp-pulse {
+            0% { transform: scale(1); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35); }
+            50% { transform: scale(1.04); box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45); }
+            100% { transform: scale(1); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35); }
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            right: 20px;
+            bottom: 80px;
+            width: 56px;
+            height: 56px;
+            border-radius: 9999px;
+            background-color: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            animation: whatsapp-pulse 2.4s ease-in-out infinite;
+            animation-play-state: paused;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            filter: brightness(1.03);
+            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .whatsapp-float {
+                animation: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1128,9 +1166,55 @@
             document.querySelectorAll('.fade-in-up').forEach(el => {
                 observer.observe(el);
             });
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const whatsappBtn = document.getElementById('whatsapp-btn');
+                const targetBtn = Array.from(document.querySelectorAll('a, button')).find(el => el.textContent.includes('Entrar para a comunidade'));
+                console.log('Botão encontrado:', targetBtn);
+
+                if (!whatsappBtn || !targetBtn) return;
+
+                const setWhatsAppVisible = (isVisible) => {
+                    if (isVisible) {
+                        whatsappBtn.style.opacity = '1';
+                        whatsappBtn.style.visibility = 'visible';
+                        whatsappBtn.style.pointerEvents = 'auto';
+                        whatsappBtn.style.animationPlayState = 'running';
+                        return;
+                    }
+
+                    whatsappBtn.style.opacity = '0';
+                    whatsappBtn.style.visibility = 'hidden';
+                    whatsappBtn.style.pointerEvents = 'none';
+                    whatsappBtn.style.animationPlayState = 'paused';
+                };
+
+                setWhatsAppVisible(false);
+
+                const whatsappObserver = new IntersectionObserver(([entry]) => {
+                    setWhatsAppVisible(Boolean(entry && entry.isIntersecting));
+                }, { threshold: 0.1 });
+
+                whatsappObserver.observe(targetBtn);
+            });
         </script>
 
     </div> <!-- End Container -->
+
+    <a
+        id="whatsapp-btn"
+        href="https://wa.me/5547984567807?text=Olá%20eu%20gostaria%20de%20tirar%20duvidas%20sobre%20o%20app%20xrun."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="whatsapp-float"
+        style="opacity: 0; visibility: hidden; transition: all 0.5s ease;"
+        aria-label="Falar no WhatsApp"
+        title="Falar no WhatsApp"
+    >
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16 3C9.373 3 4 8.373 4 15c0 2.257.625 4.42 1.809 6.302L4 29l7.87-1.74A12.01 12.01 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 21.818c-1.93 0-3.82-.523-5.468-1.513l-.392-.235-4.67 1.032 1.014-4.55-.257-.41A9.755 9.755 0 0 1 6.243 15c0-5.384 4.373-9.757 9.757-9.757S25.757 9.616 25.757 15 21.384 24.818 16 24.818zm5.552-7.236c-.303-.151-1.793-.883-2.07-.984-.277-.101-.478-.151-.68.151-.202.303-.781.984-.958 1.185-.176.202-.352.227-.655.076-.303-.151-1.28-.472-2.438-1.507-.902-.804-1.512-1.797-1.689-2.1-.176-.303-.019-.466.133-.617.136-.136.303-.352.454-.528.151-.176.202-.303.303-.505.101-.202.05-.378-.025-.528-.076-.151-.68-1.64-.932-2.246-.245-.589-.495-.509-.68-.518-.176-.008-.378-.01-.58-.01-.202 0-.53.076-.807.378-.277.303-1.059 1.034-1.059 2.52 0 1.486 1.084 2.924 1.235 3.126.151.202 2.133 3.257 5.167 4.567.722.312 1.285.499 1.724.638.724.23 1.383.197 1.903.12.58-.086 1.793-.732 2.044-1.438.252-.706.252-1.31.176-1.438-.075-.126-.277-.202-.58-.353z" fill="#FFFFFF"/>
+        </svg>
+    </a>
 
 </body>
 </html>
